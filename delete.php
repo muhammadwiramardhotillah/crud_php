@@ -5,11 +5,11 @@ $user_id = $_GET['user_id'];
 
 $sql = "DELETE FROM users WHERE user_id = $user_id";
 
-if (mysqli_query($conn, $sql)) {
+if ($conn->query($sql) === TRUE) {
     header("location: index.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-mysqli_close($conn);
+$conn->close();
 ?>

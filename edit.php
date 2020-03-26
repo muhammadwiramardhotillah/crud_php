@@ -4,8 +4,8 @@ include "connection.php";
 $user_id = $_GET['user_id'];
 
 $sql = "SELECT * FROM users WHERE user_id = $user_id";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
 
 
 $name = $row['name'];
@@ -31,9 +31,9 @@ $phone = $row['phone'];
 				<label for="phone">Phone</label>
 				<input type="text" id="phone" name="phone" placeholder="Your phone.." value="<?php echo $phone; ?>">
 				<input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
-				<input type="submit" value="Submit">
+				<input type="submit" value="Edit">
 			</form>
 		</div>
 	</body>
 </html> 
-<?php mysqli_close($conn);?>
+<?php $conn->close(); ?>

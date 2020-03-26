@@ -8,11 +8,11 @@ $phone = $_POST['phone'];
 $sql = "INSERT INTO users (name, email, phone)
 					VALUES ('$name', '$email', '$phone')";
 
-if (mysqli_query($conn, $sql)) {
+if ($conn->query($sql) === TRUE) {
     header("location: index.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-mysqli_close($conn);
+$conn->close();
 ?>
